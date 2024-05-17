@@ -1,38 +1,240 @@
-.App {
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f7f9; /* Light background color */
+  
+}
+
+.app-header {
   text-align: center;
+  margin-bottom: 20px;
+  color: #034f84; /* Dark blue color */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ski-area-select {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.modal button.cancel-button {
+  background-color: #02669b; /* Darker blue */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.modal button.cancel-button:hover {
+  background-color: #024f78; /* Even darker blue on hover */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.thank-you-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 5px;
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* Ensures message doesn't block clicks when invisible */
+}
+
+.thank-you-message-visible {
+  opacity: 1;
+  pointer-events: auto; /* Allows clicks on the message when visible */
+}
+
+
+
+
+.ski-area-select select {
+  padding: 15px;
+  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #034f84; /* Dark blue border */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style the arrow inside the select element: */
+.ski-area-select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.ski-area-select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+.ski-area-select-selected{
+  background-color: DodgerBlue;
+}
+
+.ski-area-select option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+
+.ski-area-header {
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 20px;
+  margin-bottom: 0px;
+  color: #034f84; /* Dark blue color */
+  background-color: #b1d2eb;
+  max-width: 3000px;
+}
+
+.lift-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  overflow: auto;
+}
+
+.lift-item {
+  width: 100%;
+  max-width: 3000px;
+  margin: 0px auto;
+  padding: 0px;
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  text-align: left;
+  background-color: #b1d2eb;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: scroll;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
+  /* transition: box-shadow 0.3s ease; */
+}
+/* .lift-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+} */
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0; /* Start with the modal transparent */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for modal appearance */
+  pointer-events: none; /* Prevent mouse events when modal is not visible */
+  max-width: 90%; /* Maximum width of the modal relative to the screen size */
+  max-height: 90%; /* Maximum height of the modal relative to the screen size */
+  overflow-y: auto; /* Enable scrolling for overflow content */
+}
+
+/* The .modal-open class is applied when the modal should be visible */
+.modal-open {
+  opacity: 1; /* Make the modal fully visible */
+  pointer-events: auto; /* Allow mouse events */
+}
+
+
+
+
+
+
+.lift-item p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px;
+  padding-left: 15px;
+}
+
+
+
+.lift-item button {
+  margin-top: 0px;
+  padding: 5px 5px;
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #2c8dc1;
   color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  float: right;
 }
 
-.App-link {
-  color: #61dafb;
+.lift-item button:hover {
+  background-color: #02669b; /* Darker blue on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+.modal-header {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #034f84; /* Dark blue color */
+}
+
+.modal button {
+  padding: 15px 25px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0288d1; /* Lighter blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+
+@media (max-width: 768px) {
+  .modal button {
+    padding: 12px 20px;
+    font-size: 15px;
+    margin: 4px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .modal {
+    padding: 15px;
+  }
+
+  .modal-header {
+    font-size: 18px;
   }
 }
+
+/* Make buttons smaller on mobile screens */
+@media (max-width: 480px) {
+  .modal button {
+    padding: 10px 15px;
+    font-size: 14px;
+    margin: 3px;
+  }
+
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-header {
+    font-size: 16px;
+  }
+}
+
+
+
+.modal button:hover {
+  background-color: #02669b; /* Darker blue on hover */
+}
+
+/* Add more styles as needed */
